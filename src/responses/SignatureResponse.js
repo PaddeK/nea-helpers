@@ -41,7 +41,7 @@ class SignatureResponse extends AcknowledgeResponse
     }
 
     /**
-     * VerificationKey getter
+     * Verification key getter
      * @param {string} [encoding = 'hex']
      * @return {Buffer|string}
      */
