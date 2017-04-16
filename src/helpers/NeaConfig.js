@@ -133,7 +133,16 @@ class NeaConfig
      */
     toString ()
     {
-        return JSON.stringify({
+        return JSON.stringify(this.toJson(), null, 4);
+    }
+
+    /**
+     * Returns a JSON representation of this object
+     * @returns {object}
+     */
+    toJson ()
+    {
+        return {
             neaName: this.getName(),
             logDirectory: this.getLogDirectory(),
             logLevel: this.getLogLevel(),
@@ -142,7 +151,7 @@ class NeaConfig
             nymulator: this.isNymulator(),
             retryCount: this.getRetryCount(),
             interval: this.getInterval()
-        }, null, 4);
+        };
     }
 
     /**

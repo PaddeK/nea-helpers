@@ -6,7 +6,7 @@ const
     debug = require('debug')(__filename.split(path.sep).pop()),
     EventEmitter = require('events'),
     NeaResponseFactory = require('./NeaResponseFactory'),
-    WorkerFile = path.resolve(__dirname, '/src/helpers/NapiWorker.js');
+    WorkerFile = path.resolve(__dirname, 'NapiWorker.js');
 
 class Nea extends EventEmitter
 {
