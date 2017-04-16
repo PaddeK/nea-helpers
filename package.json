@@ -1,6 +1,12 @@
 {
     "name": "nea-helpers",
+    "description": "Collection of helpers for developing a Nymi Enabled Application (NEA)",
+    "license": "MIT",
     "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://padde.rocks/node/nea-helpers/repository/archive.tar.gz?private_token=9k-mZL5GTdq1zzNYqbbi"
+    },
     "private": true,
     "scripts": {
         "start": "node index"
