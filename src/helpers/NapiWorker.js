@@ -89,7 +89,7 @@ class NapiWorker
     quit ()
     {
         this.napi.napiTerminate();
-        process.exit();
+        cluster.worker.kill();
     }
 
     /**
