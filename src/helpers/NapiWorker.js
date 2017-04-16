@@ -146,7 +146,7 @@ class NapiWorker
 
             get = this.napi.napiTryGet();
 
-            if(get.outcome !== NapiBindings.TryGetOutcome.OKAY && get.json.successful !== undefined) {
+            if(get.outcome === NapiBindings.TryGetOutcome.OKAY && get.json && get.json.successful !== undefined) {
                 debug('[%d] got: %o', this.id, get);
                 process.send(get.json);
             }
