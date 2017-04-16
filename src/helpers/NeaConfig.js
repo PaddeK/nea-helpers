@@ -46,7 +46,7 @@ class NeaConfig
         this._config = config;
         this._neaName = cnf.neaName;
         this._logDirectory = cnf.logDirectory || '.';
-        this._logLevel = cnf.logLevel || NymiApi.LogLevel.NORMAL;
+        this._logLevel = cnf.logLevel || NymiApi.LogLevel.NONE;
         this._port = cnf.port || -1;
         this._host = cnf.host || '';
         this._nymulator = cnf.nymulator || false;
