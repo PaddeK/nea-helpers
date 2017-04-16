@@ -160,22 +160,14 @@ class Nea extends EventEmitter
     /**
      * Send a NeaRequest to the NapiWorker
      * @param {NeaRequest} request
-     * @param {number} times
      * @return {*}
      * @fires Nea#event:Error
      */
-    send (request, times = 1)
+    send (request)
     {
         if (this.isRunning()) {
-            debug('Sending: %o %d time(s)', request, times);
-
-            if (times === 1) {
-                return this._worker.send({op: 'put', put: request});
-            }
-            return [...'0'.repeat(times)].forEach(() => {
-                request.exchange = `${Date.now()}|${--times}`;
-                this._worker.send({op: 'put', put: request});
-            });
+            debug('Sending: %o', request);
+            return this._worker.send({op: 'put', put: request});
         }
         /** @event Nea#Error @type {string} */
         this.emit('Error', 'Requested NEA is not running');
