@@ -75,7 +75,7 @@ class BaseResponse
      * @param {boolean} flatten
      * @return {[string[]]|string|null}
      */
-    getErrors(flatten = true)
+    getErrors(flatten = false)
     {
         if (this._errors.length) {
             return flatten ? this._errors.reduce((p, c) => p.concat(c.join(' ')), []).join('. ') + '.' : this._errors;
