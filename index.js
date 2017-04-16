@@ -2,11 +2,13 @@
 
 const
     Nea = require('./src/helpers/Nea'),
+    Utils = require('./src/helpers/Utils'),
     NymiApi = require('./src/helpers/NymiApi'),
     BaseEvent = require('./src/events/BaseEvent'),
     NeaConfig = require('./src/helpers/NeaConfig'),
     NeaRequest = require('./src/helpers/NeaRequest'),
     KeyTypeInfo = require('./src/models/KeyTypeInfo'),
+    RoamingAuth = require('./src/helpers/RoamingAuth'),
     NeaResponse = require('./src/helpers/NeaResponse'),
     PatternEvent = require('./src/events/PatternEvent'),
     NapiInitInfo = require('./src/models/NapiInitInfo'),
@@ -35,16 +37,7 @@ const
     RoamingAuthSigResponse = require('./src/responses/RoamingAuthSigResponse'),
     CdfRegistrationResponse = require('./src/responses/CdfRegistrationResponse'),
     RoamingAuthSetupResponse = require('./src/responses/RoamingAuthSetupResponse'),
-    ProvisionsChangedResponse = require('./src/responses/ProvisionsChangedResponse'),
-    Utils = require('./src/helpers/Utils'),
-    sign = Utils.signMessage,
-    tryCatch = Utils.tryCatch,
-    hasAccess = Utils.hasAccess,
-    verify = Utils.verifySignature,
-    patternToInt = Utils.patternToInt,
-    getPublicKey = Utils.getPublicKey,
-    intToPattern = Utils.intToPattern,
-    generatePem = Utils.genRoamingAuthPem;
+    ProvisionsChangedResponse = require('./src/responses/ProvisionsChangedResponse');
 
 const NeaHelpers = {
     Events: {
@@ -81,18 +74,6 @@ const NeaHelpers = {
         NapiConfig: NapiConfigInfo,
         Notification: NotificationInfo
     },
-    RoamingAuth: {
-        sign: sign,
-        verify: verify,
-        getPublicKey: getPublicKey,
-        generatePem: generatePem
-    },
-    Utils: {
-        tryCatch: tryCatch,
-        hasAccess: hasAccess,
-        patternToInt: patternToInt,
-        intToPattern: intToPattern
-    },
     Const: {
         KeyType: NymiApi.KeyType,
         LogLevel: NymiApi.LogLevel,
@@ -104,9 +85,11 @@ const NeaHelpers = {
         SignatureAlgorithm: NymiApi.SignatureAlgorithm
     },
     Nea: Nea,
+    Utils: Utils,
     Request: NeaRequest,
     NeaConfig: NeaConfig,
     Response: NeaResponse,
+    RoamingAuth: RoamingAuth,
     RequestFactory: NeaRequestFactory,
     ResponseFactory: NeaResponseFactory
 };
