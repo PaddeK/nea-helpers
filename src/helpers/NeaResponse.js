@@ -28,6 +28,7 @@ class NeaResponse
         this.operation = this.path.split('/');
         this.event = json.event || {};
         this.errors = json.errors || [];
+        this.outcome = json.outcome || '';
         this.request = json.request ||{};
         this.response = json.response || {};
         this.successful = json.successful || false;
@@ -46,6 +47,7 @@ class NeaResponse
             path: this.path,
             event: this.event,
             errors: this.errors,
+            outcome: this.outcome,
             request: this.request,
             response: this.response,
             successful: this.successful

@@ -544,6 +544,7 @@ class NeaResponseFactory
         return new AcknowledgeResponse(
                 response.completed,
                 response.errors,
+                response.outcome,
                 response.request,
                 response.exchange,
                 response.path,
