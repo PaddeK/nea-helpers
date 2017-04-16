@@ -34,10 +34,12 @@ const
     RoamingAuthNonceEvent = require('./src/events/RoamingAuthNonceEvent'),
     NotificationResponse = require('./src/responses/NotificationResponse'),
     SymmetricKeyResponse = require('./src/responses/SymmetricKeyResponse'),
+    ProvisionsChangedEvent = require('./src/events/ProvisionsChangedEvent'),
     RoamingAuthSigResponse = require('./src/responses/RoamingAuthSigResponse'),
     CdfRegistrationResponse = require('./src/responses/CdfRegistrationResponse'),
-    RoamingAuthSetupResponse = require('./src/responses/RoamingAuthSetupResponse'),
-    ProvisionsChangedResponse = require('./src/responses/ProvisionsChangedResponse');
+    RoamingAuthSetupResponse = require('./src/responses/RoamingAuthSetupResponse');
+
+'use strict';
 
 const NeaHelpers = {
     Events: {
@@ -47,7 +49,8 @@ const NeaHelpers = {
         FoundChange: FoundChangeEvent,
         GeneralError: GeneralErrorEvent,
         PresenceChange: PresenceChangeEvent,
-        RoamingAuthNonce: RoamingAuthNonceEvent
+        RoamingAuthNonce: RoamingAuthNonceEvent,
+        ProvisionsChanged: ProvisionsChangedEvent
     },
     Responses: {
         Totp: TotpResponse,
@@ -63,8 +66,7 @@ const NeaHelpers = {
         SymmetricKey: SymmetricKeyResponse,
         RoamingAuthSig: RoamingAuthSigResponse,
         CdfRegistration: CdfRegistrationResponse,
-        RoamingAuthSetup: RoamingAuthSetupResponse,
-        ProvisionsChanged: ProvisionsChangedResponse
+        RoamingAuthSetup: RoamingAuthSetupResponse
     },
     Models: {
         KeyType: KeyTypeInfo,

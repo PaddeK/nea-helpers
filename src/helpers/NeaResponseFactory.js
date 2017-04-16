@@ -19,12 +19,12 @@ const
     SignatureResponse = require('./../responses/SignatureResponse'),
     KeyDeleteResponse = require('./../responses/KeyDeleteResponse'),
     AcknowledgeResponse = require('./../responses/AcknowledgeResponse'),
+    ProvisionsChangedEvent = require('./../events/ProvisionsChangedEvent'),
     NotificationResponse = require('./../responses/NotificationResponse'),
     SymmetricKeyResponse = require('./../responses/SymmetricKeyResponse'),
     RoamingAuthSigResponse = require('./../responses/RoamingAuthSigResponse'),
     CdfRegistrationResponse = require('./../responses/CdfRegistrationResponse'),
     RoamingAuthSetupResponse = require('./../responses/RoamingAuthSetupResponse'),
-    ProvisionsChangedResponse = require('./../responses/ProvisionsChangedResponse'),
     BaseEvent = require('../events/BaseEvent'),
     PatternEvent = require('./../events/PatternEvent'),
     FoundChangeEvent = require('./../events/FoundChangeEvent'),
@@ -153,7 +153,8 @@ class NeaResponseFactory
             case 'provisions':
                 if (response.operation [1] === 'changed') {
                     ack = NeaResponseFactory._createAcknowledgeResponse(response);
-                    res = NeaResponseFactory._createProvisionsChangedResponse(ack, response.response);
+                    event = NeaResponseFactory._createBaseEvent(ack, response.event);
+                    res = NeaResponseFactory._createProvisionsChangedEvent(event, response.response);
                 }
                 break;
             case 'roaming-auth-setup':
@@ -184,16 +185,16 @@ class NeaResponseFactory
 
     /**
      * Create ProvisionsChangedResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {BaseEvent} event
      * @param {object} info
      * @type {object}
      * @property {string} provisions
-     * @return {ProvisionsChangedResponse}
+     * @return {ProvisionsChangedEvent}
      * @private
      */
-    static _createProvisionsChangedResponse (acknowledgeResponse, info)
+    static _createProvisionsChangedEvent (event, info)
     {
-        return new ProvisionsChangedResponse(acknowledgeResponse, info.provisions);
+        return new ProvisionsChangedEvent(event, info.provisions);
     }
 
     /**
