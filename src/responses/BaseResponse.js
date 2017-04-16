@@ -6,13 +6,14 @@ class BaseResponse
      * Instantiate a Base response
      * @param {boolean} completed
      * @param {[string[]]} errors
+     * @param {string} outcome
      * @param {object} request
      * @param {string} exchange
      * @param {string[]} operation
      * @param {string} path
      * @param {boolean} successful
      */
-    constructor (completed, errors, request, exchange, operation, path, successful)
+    constructor (completed, errors, outcome, request, exchange, operation, path, successful)
     {
         this._completed = !!completed;
         this._exchange = String(exchange);
@@ -21,6 +22,16 @@ class BaseResponse
         this._successful = !!successful;
         this._errors = errors || [];
         this._request = request || {};
+        this._outcome = String(outcome || '');
+    }
+
+    /**
+     * Outcome getter
+     * @returns {string}
+     */
+    getOutcome ()
+    {
+        return this._outcome;
     }
 
     /**

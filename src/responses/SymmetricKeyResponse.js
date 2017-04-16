@@ -14,6 +14,7 @@ class SymmetricKeyResponse extends AcknowledgeResponse
         super(
             response.isCompleted(),
             response.getErrors(),
+            response.getOutcome(),
             response.getRequest(),
             response.getExchange(),
             response.getPath(),
