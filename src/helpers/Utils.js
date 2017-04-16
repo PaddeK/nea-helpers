@@ -21,6 +21,7 @@ class Utils
      * Validates if given string is a path.
      *
      * @param {string} path
+     * @static
      * @return {boolean}
      */
     static isValidPath (path)
@@ -44,6 +45,7 @@ class Utils
      *
      * @param {function} tryCallback
      * @param {*} [catchCallback]
+     * @static
      * @return {*}
      */
     static tryCatch (tryCallback, catchCallback)
@@ -67,6 +69,7 @@ class Utils
      *
      * @param {string} path
      * @param {number|string} mode
+     * @static
      * @return {boolean}
      */
     static hasAccess (path, mode)
@@ -78,6 +81,7 @@ class Utils
     /**
      * Convert Nymi provision pattern to int.
      * @param {string} pattern
+     * @static
      * @return {Number}
      */
     static patternToInt (pattern)
@@ -88,6 +92,7 @@ class Utils
     /**
      * Convert int to Nymi provision pattern.
      * @param {number} int
+     * @static
      * @return {string}
      */
     static intToPattern (int)
@@ -106,6 +111,7 @@ class Utils
      * @param {string} [O]              Organization Name of certificate subject
      * @param {string} [OU]             Organizational Unit Name of certificate subject
      * @param {string} [emailAddress]   Email Address of certificate subject
+     * @static
      * @return {Promise}
      */
     static genRoamingAuthPem (file, days, CN, C, ST, L, O, OU, emailAddress)
@@ -177,6 +183,7 @@ class Utils
     /**
      * Get the public key from a certificate pem file
      * @param {string} file
+     * @static
      * @return {String} public key raw X + Y values as hex string or empty string on error
      */
     static getPublicKey (file)
@@ -203,6 +210,7 @@ class Utils
      * Sign a message with a private key from pem file
      * @param {string} file
      * @param {string} message
+     * @static
      * @return {String} signature in raw R + S values as hex string or empty string on error
      */
     static signMessage (file, message)
@@ -241,6 +249,7 @@ class Utils
      * @param {string} message
      * @param {string} signature
      * @param {string} publicKey
+     * @static
      * @return {Boolean}
      */
     static verifySignature (message, signature, publicKey)

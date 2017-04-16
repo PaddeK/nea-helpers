@@ -354,5 +354,4 @@ class Nea extends EventEmitter
     }
 }
 
-/** @extends EventEmitter */
-module.exports = (() => Nea)();
+module.exports = Nea;
