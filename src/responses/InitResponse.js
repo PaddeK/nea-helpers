@@ -2,6 +2,9 @@
 
 const AcknowledgeResponse = require('./AcknowledgeResponse');
 
+/**
+ * {@link AcknowledgeResponse}
+ */
 class InitResponse extends AcknowledgeResponse
 {
     /**

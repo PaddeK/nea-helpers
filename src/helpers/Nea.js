@@ -8,6 +8,42 @@ const
     NeaResponseFactory = require('./NeaResponseFactory'),
     WorkerFile = path.resolve(__dirname, 'NapiWorker.js');
 
+/**
+ * The Nea class manages communication with the NAPI.
+ *
+ * <b>Emitted Events:</b>
+ *      <li>InitGet - {@link InitResponse}</li>
+ *      <li>InfoGet</li>
+ *      <li>NotificationsGet</li>
+ *      <li>NotificationsSet</li>
+ *      <li>NotificationsReportFoundChange</li>
+ *      <li>NotificationsReportPresenceChange</li>
+ *      <li>NotificationsReportGeneralError</li>
+ *      <li>KeyDelete</li>
+ *      <li>BuzzRun</li>
+ *      <li>RevokeRun</li>
+ *      <li>SignSetup</li>
+ *      <li>SignRun</li>
+ *      <li>RandomRun</li>
+ *      <li>TotpRun</li>
+ *      <li>TotpGet</li>
+ *      <li>SymmetricKeyRun</li>
+ *      <li>SymmetricKeyGet</li>
+ *      <li>CdfRun</li>
+ *      <li>CdfGet</li>
+ *      <li>ProvisionRunStart</li>
+ *      <li>ProvisionRunStop</li>
+ *      <li>ProvisionPattern</li>
+ *      <li>ProvisionReportPatterns</li>
+ *      <li>ProvisionReportProvisioned</li>
+ *      <li>RoamingAuthSetupRun</li>
+ *      <li>RoamingAuthRun</li>
+ *      <li>RoamingAuthReportNonce</li>
+ *      <li>RoamingAuthSigRun</li>
+ *      <li>Error</li>
+ *      <li>ProvisionsChanged</li>
+ * </pre>
+ */
 class Nea extends EventEmitter
 {
     /**
