@@ -1,4 +1,5 @@
 'use strict';
+/** @module AcknowledgementResponse */
 
 const BaseResponse = require('./BaseResponse');
 
