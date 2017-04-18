@@ -20,7 +20,7 @@ const
  *      <li>NotificationsReportPresenceChange - {@link PresenceChangeEvent}</li>
  *      <li>NotificationsReportGeneralError - {@link GeneralErrorEvent}</li>
  *      <li>KeyDelete - {@link KeyDeleteResponse}</li>
- *      <li>BuzzRun - {@link module:AcknowledgementResponse}</li>
+ *      <li>BuzzRun - {@link AcknowledgementResponse}</li>
  *      <li>RevokeRun - {@link AcknowledgementResponse}</li>
  *      <li>SignSetup - {@link AcknowledgementResponse}</li>
  *      <li>SignRun - {@link SignatureResponse}</li>
