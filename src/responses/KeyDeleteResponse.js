@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class KeyDeleteResponse extends AcknowledgeResponse
+class KeyDeleteResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a Notification response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {KeyTypeInfo} keyTypeInfo
      */
     constructor (response, keyTypeInfo)

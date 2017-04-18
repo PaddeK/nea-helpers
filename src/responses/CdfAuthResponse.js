@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class CdfAuthResponse extends AcknowledgeResponse
+class CdfAuthResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a CDF Authentication response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {string} deviceKeyHMAC
      * @param {string} sessionKeyHMAC
      */

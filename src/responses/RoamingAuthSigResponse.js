@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class RoamingAuthSigResponse extends AcknowledgeResponse
+class RoamingAuthSigResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a Signature response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {string} nymibandSig
      * @param {string} raKeyId
      */

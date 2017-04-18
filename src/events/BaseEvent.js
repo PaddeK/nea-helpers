@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./../responses/AcknowledgeResponse');
+const AcknowledgementResponse = require('./../responses/AcknowledgementResponse');
 
-class BaseEvent extends AcknowledgeResponse
+class BaseEvent extends AcknowledgementResponse
 {
     /**
      * Instantiate a Event
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {string} kind
      */
     constructor (response, kind)
@@ -27,7 +27,7 @@ class BaseEvent extends AcknowledgeResponse
 
     /**
      * Response getter
-     * @return {AcknowledgeResponse}
+     * @return {AcknowledgementResponse}
      */
     getResponse ()
     {

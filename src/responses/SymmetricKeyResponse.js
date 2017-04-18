@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class SymmetricKeyResponse extends AcknowledgeResponse
+class SymmetricKeyResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a SymmetricKey response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {string} key
      */
     constructor (response, key)

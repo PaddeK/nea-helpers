@@ -13,35 +13,35 @@ const
  *
  * <b>Emitted Events:</b>
  *      <li>InitGet - {@link InitResponse}</li>
- *      <li>InfoGet</li>
- *      <li>NotificationsGet</li>
- *      <li>NotificationsSet</li>
- *      <li>NotificationsReportFoundChange</li>
- *      <li>NotificationsReportPresenceChange</li>
- *      <li>NotificationsReportGeneralError</li>
- *      <li>KeyDelete</li>
- *      <li>BuzzRun</li>
- *      <li>RevokeRun</li>
- *      <li>SignSetup</li>
- *      <li>SignRun</li>
- *      <li>RandomRun</li>
- *      <li>TotpRun</li>
- *      <li>TotpGet</li>
- *      <li>SymmetricKeyRun</li>
- *      <li>SymmetricKeyGet</li>
- *      <li>CdfRun</li>
- *      <li>CdfGet</li>
- *      <li>ProvisionRunStart</li>
- *      <li>ProvisionRunStop</li>
- *      <li>ProvisionPattern</li>
- *      <li>ProvisionReportPatterns</li>
- *      <li>ProvisionReportProvisioned</li>
- *      <li>RoamingAuthSetupRun</li>
- *      <li>RoamingAuthRun</li>
- *      <li>RoamingAuthReportNonce</li>
- *      <li>RoamingAuthSigRun</li>
- *      <li>Error</li>
- *      <li>ProvisionsChanged</li>
+ *      <li>InfoGet - {@link InfoResponse}</li>
+ *      <li>NotificationsGet - {@link NotificationResponse}</li>
+ *      <li>NotificationsSet - {@link NotificationResponse}</li>
+ *      <li>NotificationsReportFoundChange - {@link FoundChangeEvent}</li>
+ *      <li>NotificationsReportPresenceChange - {@link PresenceChangeEvent}</li>
+ *      <li>NotificationsReportGeneralError - {@link GeneralErrorEvent}</li>
+ *      <li>KeyDelete - {@link KeyDeleteResponse}</li>
+ *      <li>BuzzRun - {@link AcknowledgementResponse}</li>
+ *      <li>RevokeRun - {@link AcknowledgementResponse}</li>
+ *      <li>SignSetup - {@link AcknowledgementResponse}</li>
+ *      <li>SignRun - {@link SignatureResponse}</li>
+ *      <li>RandomRun - {@link RandomResponse}</li>
+ *      <li>TotpRun - {@link AcknowledgementResponse}</li>
+ *      <li>TotpGet - {@link TotpResponse}</li>
+ *      <li>SymmetricKeyRun - {@link AcknowledgementResponse}</li>
+ *      <li>SymmetricKeyGet - {@link SymmetricKeyResponse}</li>
+ *      <li>CdfRun - {@link CdfRegistrationResponse}</li>
+ *      <li>CdfGet - {@link CdfAuthResponse}</li>
+ *      <li>ProvisionRunStart - {@link AcknowledgementResponse}</li>
+ *      <li>ProvisionRunStop - {@link AcknowledgementResponse}</li>
+ *      <li>ProvisionPattern - {@link AcknowledgementResponse}</li>
+ *      <li>ProvisionReportPatterns - {@link PatternEvent}</li>
+ *      <li>ProvisionReportProvisioned - {@link ProvisionedEvent}</li>
+ *      <li>RoamingAuthSetupRun - {@link RoamingAuthSetupResponse}</li>
+ *      <li>RoamingAuthRun - {@link AcknowledgementResponse}</li>
+ *      <li>RoamingAuthReportNonce - {@link RoamingAuthNonceEvent}</li>
+ *      <li>RoamingAuthSigRun - {@link RoamingAuthSigResponse}</li>
+ *      <li>Error - {string}</li>
+ *      <li>ProvisionsChanged - {@link ProvisionsChangedEvent}</li>
  * </pre>
  */
 class Nea extends EventEmitter
@@ -291,15 +291,15 @@ class Nea extends EventEmitter
                 this.emit('KeyDelete', response);
                 break;
             case 'buzz/run':
-                /** @event Nea#BuzzRun @type {AcknowledgeResponse} */
+                /** @event Nea#BuzzRun @type {AcknowledgementResponse} */
                 this.emit('BuzzRun', response);
                 break;
             case 'revoke/run':
-                /** @event Nea#RevokeRun @type {AcknowledgeResponse} */
+                /** @event Nea#RevokeRun @type {AcknowledgementResponse} */
                 this.emit('RevokeRun', response);
                 break;
             case 'sign/setup':
-                /** @event Nea#SignSetup @type {AcknowledgeResponse} */
+                /** @event Nea#SignSetup @type {AcknowledgementResponse} */
                 this.emit('SignSetup', response);
                 break;
             case 'sign/run':
@@ -311,7 +311,7 @@ class Nea extends EventEmitter
                 this.emit('RandomRun', response);
                 break;
             case 'totp/run':
-                /** @event Nea#TotpRun @type {AcknowledgeResponse} */
+                /** @event Nea#TotpRun @type {AcknowledgementResponse} */
                 this.emit('TotpRun', response);
                 break;
             case 'totp/get':
@@ -319,7 +319,7 @@ class Nea extends EventEmitter
                 this.emit('TotpGet', response);
                 break;
             case 'symmetricKey/run':
-                /** @event Nea#SymmetricKeyRun @type {AcknowledgeResponse} */
+                /** @event Nea#SymmetricKeyRun @type {AcknowledgementResponse} */
                 this.emit('SymmetricKeyRun', response);
                 break;
             case 'symmetricKey/get':
@@ -335,15 +335,15 @@ class Nea extends EventEmitter
                 this.emit('CdfGet', response);
                 break;
             case 'provision/run/start':
-                /** @event Nea#ProvisionRunStart @type {AcknowledgeResponse} */
+                /** @event Nea#ProvisionRunStart @type {AcknowledgementResponse} */
                 this.emit('ProvisionRunStart', response);
                 break;
             case 'provision/run/stop':
-                /** @event Nea#ProvisionRunStop @type {AcknowledgeResponse} */
+                /** @event Nea#ProvisionRunStop @type {AcknowledgementResponse} */
                 this.emit('ProvisionRunStop', response);
                 break;
             case 'provision/pattern':
-                /** @event Nea#ProvisionPattern @type {AcknowledgeResponse} */
+                /** @event Nea#ProvisionPattern @type {AcknowledgementResponse} */
                 this.emit('ProvisionPattern', response);
                 break;
             case 'provision/report/patterns':
@@ -359,7 +359,7 @@ class Nea extends EventEmitter
                 this.emit('RoamingAuthSetupRun', response);
                 break;
             case 'roaming-auth/run':
-                /** @event Nea#RoamingAuthRun @type {AcknowledgeResponse} */
+                /** @event Nea#RoamingAuthRun @type {AcknowledgementResponse} */
                 this.emit('RoamingAuthRun', response);
                 break;
             case 'roaming-auth/report/nonce':

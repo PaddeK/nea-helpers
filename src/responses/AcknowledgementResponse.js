@@ -2,10 +2,10 @@
 
 const BaseResponse = require('./BaseResponse');
 
-class AcknowledgeResponse extends BaseResponse
+class AcknowledgementResponse extends BaseResponse
 {
     /**
-     * Instantiate a Acknowledge response
+     * Instantiate a Acknowledgement response
      * @param {boolean} completed
      * @param {[string[]]} errors
      * @param {string} outcome
@@ -20,4 +20,4 @@ class AcknowledgeResponse extends BaseResponse
     }
 }
 
-module.exports = AcknowledgeResponse;
+module.exports = AcknowledgementResponse;

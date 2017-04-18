@@ -1,15 +1,15 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
 /**
- * {@link AcknowledgeResponse}
+ * {@link AcknowledgementResponse}
  */
-class InitResponse extends AcknowledgeResponse
+class InitResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a Init response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {NapiInitInfo} napiInitInfo
      */
     constructor (response, napiInitInfo)

@@ -2,13 +2,13 @@
 
 const
     NymiApi = require('./../helpers/NymiApi'),
-    AcknowledgeResponse = require('./AcknowledgeResponse');
+    AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class InfoResponse extends AcknowledgeResponse
+class InfoResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a Info response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {NapiConfigInfo} napiConfigInfo
      * @param {NymiBandInfo[]} nymiBandInfos
      * @param {object} provisionMap

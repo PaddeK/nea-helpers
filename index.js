@@ -30,12 +30,12 @@ const
     KeyDeleteResponse = require('./src/responses/KeyDeleteResponse'),
     NeaResponseFactory = require('./src/helpers/NeaResponseFactory'),
     PresenceChangeEvent = require('./src/events/PresenceChangeEvent'),
-    AcknowledgeResponse = require('./src/responses/AcknowledgeResponse'),
     RoamingAuthNonceEvent = require('./src/events/RoamingAuthNonceEvent'),
     NotificationResponse = require('./src/responses/NotificationResponse'),
     SymmetricKeyResponse = require('./src/responses/SymmetricKeyResponse'),
     ProvisionsChangedEvent = require('./src/events/ProvisionsChangedEvent'),
     RoamingAuthSigResponse = require('./src/responses/RoamingAuthSigResponse'),
+    AcknowledgementResponse = require('./src/responses/AcknowledgementResponse'),
     CdfRegistrationResponse = require('./src/responses/CdfRegistrationResponse'),
     RoamingAuthSetupResponse = require('./src/responses/RoamingAuthSetupResponse');
 
@@ -61,10 +61,10 @@ const NeaHelpers = {
         BaseResponse: BaseResponse,
         KeyDelete: KeyDeleteResponse,
         Signature: SignatureResponse,
-        Acknowledge: AcknowledgeResponse,
         Notification: NotificationResponse,
         SymmetricKey: SymmetricKeyResponse,
         RoamingAuthSig: RoamingAuthSigResponse,
+        Acknowledgemen: AcknowledgementResponse,
         CdfRegistration: CdfRegistrationResponse,
         RoamingAuthSetup: RoamingAuthSetupResponse
     },

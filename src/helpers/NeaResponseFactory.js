@@ -18,11 +18,11 @@ const
     CdfAuthResponse = require('./../responses/CdfAuthResponse'),
     SignatureResponse = require('./../responses/SignatureResponse'),
     KeyDeleteResponse = require('./../responses/KeyDeleteResponse'),
-    AcknowledgeResponse = require('./../responses/AcknowledgeResponse'),
     ProvisionsChangedEvent = require('./../events/ProvisionsChangedEvent'),
     NotificationResponse = require('./../responses/NotificationResponse'),
     SymmetricKeyResponse = require('./../responses/SymmetricKeyResponse'),
     RoamingAuthSigResponse = require('./../responses/RoamingAuthSigResponse'),
+    AcknowledgementResponse = require('./../responses/AcknowledgementResponse'),
     CdfRegistrationResponse = require('./../responses/CdfRegistrationResponse'),
     RoamingAuthSetupResponse = require('./../responses/RoamingAuthSetupResponse'),
     BaseEvent = require('../events/BaseEvent'),
@@ -51,22 +51,22 @@ class NeaResponseFactory
         switch (response.operation[0]) {
             case 'info':
                 if (response.operation[1] === 'get') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     res = NeaResponseFactory._createInfoResponse(ack, response.response);
                 }
                 break;
             case 'init':
                 if (response.operation[1] === 'get') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     res = NeaResponseFactory._createInitResponse(ack, response.response);
                 }
                 break;
             case 'notifications':
                 if (response.operation[1] === 'get' || response.operation[1] === 'set') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     res = NeaResponseFactory._createNotificationResponse(ack, response.response);
                 } else if (response.operation[1] === 'report') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     event = NeaResponseFactory._createBaseEvent(ack, response.event);
 
                     switch (response.operation[2]) {
@@ -86,32 +86,32 @@ class NeaResponseFactory
                 break;
             case 'key':
                 if (response.operation[1] === 'delete') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     res = NeaResponseFactory._createKeyDeleteResponse(ack, response.response);
                 }
                 break;
             case 'buzz':
             case 'revoke':
                 if (response.operation[1] === 'run') {
-                    res = NeaResponseFactory._createAcknowledgeResponse(response);
+                    res = NeaResponseFactory._createAcknowledgementResponse(response);
                 }
                 break;
             case 'sign':
                 if (response.operation[1] === 'run') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     res = NeaResponseFactory._createSignatureResponse(ack, response.response);
                 } else if (response.operation[1] === 'setup') {
-                    res = NeaResponseFactory._createAcknowledgeResponse(response);
+                    res = NeaResponseFactory._createAcknowledgementResponse(response);
                 }
                 break;
             case 'random':
                 if (response.operation[1] === 'run') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     res = NeaResponseFactory._createRandomResponse(ack, response.response);
                 }
                 break;
             case 'totp':
-                ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                ack = NeaResponseFactory._createAcknowledgementResponse(response);
 
                 if (response.operation[1] === 'get') {
                     res = NeaResponseFactory._createTotpResponse(ack, response.response);
@@ -120,7 +120,7 @@ class NeaResponseFactory
                 }
                 break;
             case 'symmetricKey':
-                ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                ack = NeaResponseFactory._createAcknowledgementResponse(response);
 
                 if (response.operation[1] === 'get') {
                     res = NeaResponseFactory._createSymmetricKeyResponse(ack, response.response);
@@ -129,7 +129,7 @@ class NeaResponseFactory
                 }
                 break;
             case 'cdf':
-                ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                ack = NeaResponseFactory._createAcknowledgementResponse(response);
 
                 if (response.operation[1] === 'run') {
                     res = NeaResponseFactory._createCdfRegistrationResponse(ack, response.response);
@@ -138,7 +138,7 @@ class NeaResponseFactory
                 }
                 break;
             case 'provision':
-                ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                ack = NeaResponseFactory._createAcknowledgementResponse(response);
 
                 if (['provision/run/start', 'provision/run/stop', 'provision/pattern'].includes(response.path)) {
                     res = ack;
@@ -152,29 +152,29 @@ class NeaResponseFactory
                 break;
             case 'provisions':
                 if (response.operation [1] === 'changed') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     event = NeaResponseFactory._createBaseEvent(ack, response.event);
                     res = NeaResponseFactory._createProvisionsChangedEvent(event, response.response);
                 }
                 break;
             case 'roaming-auth-setup':
                 if (response.operation[1] === 'run') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     res = NeaResponseFactory._createRoamingAuthSetupResponse(ack, response.response);
                 }
                 break;
             case 'roaming-auth':
                 if (response.operation[1] === 'run') {
-                    res = NeaResponseFactory._createAcknowledgeResponse(response);
+                    res = NeaResponseFactory._createAcknowledgementResponse(response);
                 } else if (response.operation[1] === 'report') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     event = NeaResponseFactory._createBaseEvent(ack, response.event);
                     res = NeaResponseFactory._createRoamingAuthNonceEvent(event, response.event);
                 }
                 break;
             case 'roaming-auth-sig':
                 if (response.operation[1] === 'run') {
-                    ack = NeaResponseFactory._createAcknowledgeResponse(response);
+                    ack = NeaResponseFactory._createAcknowledgementResponse(response);
                     res = NeaResponseFactory._createRoamingAuthSigResponse(ack, response.response);
                 }
                 break;
@@ -199,7 +199,7 @@ class NeaResponseFactory
 
     /**
      * Create RoamingAuthSetupResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {string} RAKey
@@ -207,14 +207,14 @@ class NeaResponseFactory
      * @return {RoamingAuthSetupResponse}
      * @private
      */
-    static _createRoamingAuthSetupResponse (acknowledgeResponse, info)
+    static _createRoamingAuthSetupResponse (acknowledgement, info)
     {
-        return new RoamingAuthSetupResponse(acknowledgeResponse, info.RAKey, info.RAKeyId)
+        return new RoamingAuthSetupResponse(acknowledgement, info.RAKey, info.RAKeyId)
     }
 
     /**
      * Create RoamingAuthSigResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {string} nymibandSig
@@ -222,9 +222,9 @@ class NeaResponseFactory
      * @return {RoamingAuthSigResponse}
      * @private
      */
-    static _createRoamingAuthSigResponse (acknowledgeResponse, info)
+    static _createRoamingAuthSigResponse (acknowledgement, info)
     {
-        return new RoamingAuthSigResponse(acknowledgeResponse, info.nymibandSig, info.raKeyId);
+        return new RoamingAuthSigResponse(acknowledgement, info.nymibandSig, info.raKeyId);
     }
 
     /**
@@ -272,7 +272,7 @@ class NeaResponseFactory
 
     /**
      * Create CdfRegistrationResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {string} authenticationKey
@@ -280,14 +280,14 @@ class NeaResponseFactory
      * @return {CdfRegistrationResponse}
      * @private
      */
-    static _createCdfRegistrationResponse (acknowledgeResponse, info)
+    static _createCdfRegistrationResponse (acknowledgement, info)
     {
-        return new CdfRegistrationResponse(acknowledgeResponse, info.authenticationKey, info.deviceKey);
+        return new CdfRegistrationResponse(acknowledgement, info.authenticationKey, info.deviceKey);
     }
 
     /**
      * Create CdfAuthResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {string} deviceKeyHMAC
@@ -295,56 +295,56 @@ class NeaResponseFactory
      * @return {CdfAuthResponse}
      * @private
      */
-    static _createCdfAuthResponse (acknowledgeResponse, info)
+    static _createCdfAuthResponse (acknowledgement, info)
     {
-        return new CdfAuthResponse(acknowledgeResponse, info.deviceKeyHMAC, info.sessionKeyHMAC);
+        return new CdfAuthResponse(acknowledgement, info.deviceKeyHMAC, info.sessionKeyHMAC);
     }
 
     /**
      * Create TotpResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {string} totp
      * @return {TotpResponse}
      * @private
      */
-    static _createTotpResponse (acknowledgeResponse, info)
+    static _createTotpResponse (acknowledgement, info)
     {
-        return new TotpResponse(acknowledgeResponse, info.totp);
+        return new TotpResponse(acknowledgement, info.totp);
     }
 
     /**
      * Create SymmetricKeyResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {string} key
      * @return {SymmetricKeyResponse}
      * @private
      */
-    static _createSymmetricKeyResponse (acknowledgeResponse, info)
+    static _createSymmetricKeyResponse (acknowledgement, info)
     {
-        return new SymmetricKeyResponse(acknowledgeResponse, info.key);
+        return new SymmetricKeyResponse(acknowledgement, info.key);
     }
 
     /**
      * Create RandomResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {string} pseudoRandomNumber
      * @return {RandomResponse}
      * @private
      */
-    static _createRandomResponse (acknowledgeResponse, info)
+    static _createRandomResponse (acknowledgement, info)
     {
-        return new RandomResponse(acknowledgeResponse, info.pseudoRandomNumber)
+        return new RandomResponse(acknowledgement, info.pseudoRandomNumber)
     }
 
     /**
      * Create SignatureResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {string} signature
@@ -352,21 +352,21 @@ class NeaResponseFactory
      * @return {SignatureResponse}
      * @private
      */
-    static _createSignatureResponse (acknowledgeResponse, info)
+    static _createSignatureResponse (acknowledgement, info)
     {
-        return new SignatureResponse(acknowledgeResponse, info.signature, info.verificationKey)
+        return new SignatureResponse(acknowledgement, info.signature, info.verificationKey)
     }
 
     /**
      * Create KeyDeleteResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} keyInfo
      * @return {KeyDeleteResponse}
      * @private
      */
-    static _createKeyDeleteResponse (acknowledgeResponse, keyInfo)
+    static _createKeyDeleteResponse (acknowledgement, keyInfo)
     {
-        return new KeyDeleteResponse(acknowledgeResponse, NeaResponseFactory._createKeyTypeInfo(keyInfo));
+        return new KeyDeleteResponse(acknowledgement, NeaResponseFactory._createKeyTypeInfo(keyInfo));
     }
 
     /**
@@ -418,28 +418,28 @@ class NeaResponseFactory
 
     /**
      * Create BaseEvent
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} event
      * @type {object}
      * @property {string} kind
      * @return {BaseEvent}
      * @private
      */
-    static _createBaseEvent (acknowledgeResponse, event)
+    static _createBaseEvent (acknowledgement, event)
     {
-        return new BaseEvent(acknowledgeResponse, event.kind);
+        return new BaseEvent(acknowledgement, event.kind);
     }
 
     /**
      * Create NotificationResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @return {NotificationResponse}
      * @private
      */
-    static _createNotificationResponse (acknowledgeResponse, info)
+    static _createNotificationResponse (acknowledgement, info)
     {
-        return new NotificationResponse(acknowledgeResponse, NeaResponseFactory._createNotificationInfo(info));
+        return new NotificationResponse(acknowledgement, NeaResponseFactory._createNotificationInfo(info));
     }
 
     /**
@@ -467,14 +467,14 @@ class NeaResponseFactory
 
     /**
      * Create InfoResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @return {InitResponse}
      * @private
      */
-    static _createInitResponse (acknowledgeResponse, info)
+    static _createInitResponse (acknowledgement, info)
     {
-        return new InitResponse(acknowledgeResponse, NeaResponseFactory._createNapiInitInfo(info));
+        return new InitResponse(acknowledgement, NeaResponseFactory._createNapiInitInfo(info));
     }
 
     /**
@@ -503,7 +503,7 @@ class NeaResponseFactory
 
     /**
      * Create InfoResponse
-     * @param {AcknowledgeResponse} acknowledgeResponse
+     * @param {AcknowledgementResponse} acknowledgement
      * @param {object} info
      * @type {object}
      * @property {object} config
@@ -515,7 +515,7 @@ class NeaResponseFactory
      * @return {InfoResponse}
      * @private
      */
-    static _createInfoResponse (acknowledgeResponse, info)
+    static _createInfoResponse (acknowledgement, info)
     {
         let bands = info.nymiband.reduce((prev, b) => {
             let prov = b.isProvisioned ? NeaResponseFactory._createProvisionInfo(b) : undefined;
@@ -523,7 +523,7 @@ class NeaResponseFactory
         }, []);
 
         return new InfoResponse(
-            acknowledgeResponse,
+            acknowledgement,
             NeaResponseFactory._createNapiConfigInfo(info.config),
             bands,
             info.provisionMap,
@@ -534,14 +534,14 @@ class NeaResponseFactory
     }
 
     /**
-     * Create AcknowledgeResponse
+     * Create AcknowledgementResponse
      * @param {NeaResponse} response
-     * @return {AcknowledgeResponse}
+     * @return {AcknowledgementResponse}
      * @private
      */
-    static _createAcknowledgeResponse (response)
+    static _createAcknowledgementResponse (response)
     {
-        return new AcknowledgeResponse(
+        return new AcknowledgementResponse(
                 response.completed,
                 response.errors,
                 response.outcome,

@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class SignatureResponse extends AcknowledgeResponse
+class SignatureResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a Signature response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {string} signature
      * @param {string} verificationKey
      */

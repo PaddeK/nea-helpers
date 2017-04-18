@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class NotificationResponse extends AcknowledgeResponse
+class NotificationResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a Notification response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {NotificationInfo} notificationInfo
      */
     constructor (response, notificationInfo)

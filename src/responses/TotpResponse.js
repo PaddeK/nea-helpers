@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class TotpResponse extends AcknowledgeResponse
+class TotpResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a TOTP response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {string} totp
      */
     constructor (response, totp)

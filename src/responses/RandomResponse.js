@@ -1,12 +1,12 @@
 'use strict';
 
-const AcknowledgeResponse = require('./AcknowledgeResponse');
+const AcknowledgementResponse = require('./AcknowledgementResponse');
 
-class RandomResponse extends AcknowledgeResponse
+class RandomResponse extends AcknowledgementResponse
 {
     /**
      * Instantiate a PseudoRandomNumber response
-     * @param {AcknowledgeResponse} response
+     * @param {AcknowledgementResponse} response
      * @param {string} random
      */
     constructor (response, random)
