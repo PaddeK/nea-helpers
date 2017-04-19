@@ -41,7 +41,7 @@ const
 
 'use strict';
 
-const NeaHelpers = {
+module.exports = {
     Events: {
         BaseEvent: BaseEvent,
         Pattern: PatternEvent,
@@ -95,5 +95,3 @@ const NeaHelpers = {
     RequestFactory: NeaRequestFactory,
     ResponseFactory: NeaResponseFactory
 };
-
-module.exports = NeaHelpers;
