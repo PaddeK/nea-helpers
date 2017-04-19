@@ -64,12 +64,34 @@ class NeaConfig
     }
 
     /**
+     * Nymulator setter
+     * @param {boolean} nymulate
+     * @returns {NeaConfig}
+     */
+    useNymulator (nymulate)
+    {
+        this._nymulator = !!nymulate;
+        return this;
+    }
+
+    /**
      * Host getter
      * @return {string}
      */
     getHost ()
     {
         return this._host;
+    }
+
+    /**
+     * Host setter
+     * @param {string} host
+     * @return {NeaConfig}
+     */
+    setHost (host)
+    {
+        this._host = String(host);
+        return this;
     }
 
     /**
@@ -82,12 +104,34 @@ class NeaConfig
     }
 
     /**
+     * Port setter
+     * @param {int} port
+     * @return {NeaConfig}
+     */
+    setPort (port)
+    {
+        this._port = ~~port;
+        return this;
+    }
+
+    /**
      * RetryCount getter
      * @return {int}
      */
     getRetryCount ()
     {
         return this._retryCount;
+    }
+
+    /**
+     * RetryCount setter
+     * @param {int} count
+     * @return {NeaConfig}
+     */
+    setRetryCount (count)
+    {
+        this._retryCount = ~~count;
+        return this;
     }
 
     /**
@@ -100,12 +144,34 @@ class NeaConfig
     }
 
     /**
+     * Interval setter
+     * @param {int} ms
+     * @return {NeaConfig}
+     */
+    setInterval (ms)
+    {
+        this._interval = ~~ms;
+        return this;
+    }
+
+    /**
      * LogLevel getter
      * @return {int}
      */
     getLogLevel ()
     {
         return this._logLevel;
+    }
+
+    /**
+     * LogLevel setter
+     * @param {LogLevel} logLevel
+     * @return {NeaConfig}
+     */
+    setLogLevel (logLevel)
+    {
+        this._logLevel = logLevel;
+        return this;
     }
 
     /**
@@ -118,12 +184,34 @@ class NeaConfig
     }
 
     /**
+     * NeaName setter
+     * @param {string} name
+     * @returns {NeaConfig}
+     */
+    setName (name)
+    {
+        this._neaName = String(name);
+        return this;
+    }
+
+    /**
      * LogDirectory getter
      * @return {string}
      */
     getLogDirectory ()
     {
         return this._logDirectory;
+    }
+
+    /**
+     * LogDirectory  setter
+     * @param {string} directory
+     * @returns {NeaConfig}
+     */
+    setLogDirectory  (directory)
+    {
+        this._logDirectory = String(directory);
+        return this;
     }
 
     /**
