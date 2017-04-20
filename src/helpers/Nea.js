@@ -42,7 +42,6 @@ const
  *      <li>RoamingAuthSigRun - {@link RoamingAuthSigResponse}</li>
  *      <li>Error - {string}</li>
  *      <li>ProvisionsChanged - {@link ProvisionsChangedEvent}</li>
- * </pre>
  */
 class Nea extends EventEmitter
 {

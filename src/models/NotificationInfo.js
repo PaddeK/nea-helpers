@@ -63,6 +63,30 @@ class NotificationInfo
     {
         return this._onProvision;
     }
+
+    /**
+     * Return string representation
+     * @return {string}
+     */
+    toString ()
+    {
+        return JSON.stringify(this.toJson(), null, 4);
+    }
+
+    /**
+     * Returns json representation
+     * @returns {object}
+     */
+    toJson ()
+    {
+        return {
+            onFirmwareVersion: this.onFirmwareVersion(),
+            onFoundChange: this.onFoundChange(),
+            onPresenceChange: this.onPresenceChange(),
+            onProvision: this.onProvision(),
+            onGeneralError: this.onGeneralError()
+        }
+    }
 }
 
 module.exports = NotificationInfo;

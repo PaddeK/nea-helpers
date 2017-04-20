@@ -15,20 +15,26 @@ class NeaConfig
      */
     constructor (config)
     {
-        let cnf;
+        let cnf = {};
 
         if (!Utils.isValidPath(path.dirname(config))) {
             throw new TypeError('Directory of given config is not valid');
         }
 
-        if (!Utils.hasAccess(config, 'frw') || !fs.statSync(config).isFile() || !path.isAbsolute(config)) {
-            throw new TypeError('Given config must be readable and writeable');
-        }
+        if (Utils.hasAccess(config, 'f')) {
+            if (!Utils.hasAccess(config, 'rw') || !fs.statSync(config).isFile() || !path.isAbsolute(config)) {
+                throw new TypeError('Given config must be readable and writeable');
+            }
 
-        cnf = Utils.tryCatch(() => JSON.parse(fs.readFileSync(config, 'utf8')), false);
+            cnf = Utils.tryCatch(() => JSON.parse(fs.readFileSync(config, 'utf8')), false);
 
-        if (cnf === false || !this.isValidConfig(cnf)) {
-            throw new SyntaxError('Error while parsing or invalid config');
+            if (cnf === false || !this.isValidConfig(cnf)) {
+                throw new SyntaxError('Error while parsing or invalid config');
+            }
+        } else {
+            if (!Utils.hasAccess(path.dirname(config), 'rw')) {
+                throw new TypeError('Given config path must be readable and writeable');
+            }
         }
 
         /**
@@ -45,10 +51,10 @@ class NeaConfig
 
         this._config = config;
         this._neaName = cnf.neaName;
-        this._logDirectory = cnf.logDirectory || '.';
+        this._logDirectory = cnf.logDirectory || path.dirname(config);
         this._logLevel = cnf.logLevel || NymiApi.LogLevel.NONE;
-        this._port = cnf.port || -1;
-        this._host = cnf.host || '';
+        this._port = cnf.port || 9089;
+        this._host = cnf.host || '127.0.0.1';
         this._nymulator = cnf.nymulator || false;
         this._retryCount = cnf.retryCount || 3;
         this._interval = cnf.interval || 100;

@@ -133,20 +133,22 @@ class NeaRequestFactory
 
     /**
      * Create NeaRequest for enabling/disabling events
-     * @param {boolean} [found = true]
-     * @param {boolean} [presence = true]
+     * @param {boolean|null} [found = null]
+     * @param {boolean|null} [presence = null]
      * @param {string|null} [exchange = null]
      * @return {NeaRequest}
      */
-    static setEvents (found = true, presence = true, exchange = null)
+    static setEvents (found = null, presence = null, exchange = null)
     {
+        let req = {};
+
+        req = Object.assign(req, found === null ? {} : {onFoundChange: !!found});
+        req = Object.assign(req, presence === null ? {} : {onPresenceChange: !!presence});
+
         return new NeaRequest({
             path: 'notifications/set',
             exchange: exchange,
-            request: {
-                onFoundChange: !!found,
-                onPresenceChange: !!presence
-            }
+            request: req
         });
     }
 

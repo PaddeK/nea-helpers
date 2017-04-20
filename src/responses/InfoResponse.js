@@ -87,7 +87,7 @@ class InfoResponse extends AcknowledgementResponse
      */
     getNymiBandByPid (pid)
     {
-        return this._nymiBandInfos.find(band => band.getPid() === pid);
+        return this._nymiBandInfos.find(band => band.isProvisioned() && band.getProvisionInfo().getPid() === pid);
     }
 
     /**

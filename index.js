@@ -64,7 +64,7 @@ module.exports = {
         Notification: NotificationResponse,
         SymmetricKey: SymmetricKeyResponse,
         RoamingAuthSig: RoamingAuthSigResponse,
-        Acknowledgemen: AcknowledgementResponse,
+        Acknowledgement: AcknowledgementResponse,
         CdfRegistration: CdfRegistrationResponse,
         RoamingAuthSetup: RoamingAuthSetupResponse
     },
