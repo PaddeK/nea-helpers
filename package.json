@@ -7,10 +7,31 @@
         "type": "git",
         "url": "https://github.com/PaddeK/nea-helpers.git"
     },
-    "private": true,
+    "keywords": ["napi", "nymi", "nymi api", "nea"],
     "scripts": {
         "start": "node index"
     },
+    "engines" : {
+        "node" : ">=6.9.1"
+    },
+    "os" : [
+        "darwin",
+        "win32"
+    ],
+    "author": {
+        "name": "Patrick Klös",
+        "email": "pkloes@web.de"
+    },
+    "bugs": {
+        "url": "https://github.com/PaddeK/node-nea-helpers/issues"
+    },
+    "homepage": "https://github.com/PaddeK/node-nea-helpers",
+    "maintainers": [
+        {
+            "name": "Patrick Klös",
+            "email": "pkloes@web.de"
+        }
+    ],
     "dependencies": {
         "asn1.js": "~4.9.1",
         "asn1.js-rfc5280": "~2.0.0",
