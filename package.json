@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "repository": {
         "type": "git",
-        "url": "https://padde.rocks/node/nea-helpers/repository/archive.tar.gz?private_token=9k-mZL5GTdq1zzNYqbbi"
+        "url": "https://github.com/PaddeK/nea-helpers.git"
     },
     "private": true,
     "scripts": {

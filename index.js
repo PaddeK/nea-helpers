@@ -39,8 +39,6 @@ const
     CdfRegistrationResponse = require('./src/responses/CdfRegistrationResponse'),
     RoamingAuthSetupResponse = require('./src/responses/RoamingAuthSetupResponse');
 
-'use strict';
-
 module.exports = {
     Events: {
         BaseEvent: BaseEvent,
