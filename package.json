@@ -2,7 +2,7 @@
     "name": "nea-helpers",
     "description": "Collection of helpers for developing a Nymi Enabled Application (NEA)",
     "license": "MIT",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "repository": {
         "type": "git",
         "url": "https://github.com/PaddeK/nea-helpers.git"

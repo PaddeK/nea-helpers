@@ -133,6 +133,7 @@ class RoamingAuth
         }
 
         try {
+            //noinspection JSCheckFunctionSignatures
             let Asn1Signature = asn1.define('signature', function() {
                     let seq = this.seq(),
                         /**
@@ -143,7 +144,7 @@ class RoamingAuth
                         s = this.key('s');
                     seq.obj(r.int(), s.int());
                 }),
-                signature = crypto.createSign('sha256').update(message).sign(fs.readFileSync(file)),
+                signature = crypto.createSign('sha256').update(Buffer.from(message, 'hex')).sign(fs.readFileSync(file)),
                 /**
                  * @type {object}
                  * @property {function} r.toBuffer

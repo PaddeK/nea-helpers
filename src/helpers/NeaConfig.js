@@ -171,7 +171,7 @@ class NeaConfig
 
     /**
      * LogLevel setter
-     * @param {LogLevel} logLevel
+     * @param {int} logLevel
      * @return {NeaConfig}
      */
     setLogLevel (logLevel)

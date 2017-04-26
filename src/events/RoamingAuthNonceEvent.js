@@ -18,7 +18,7 @@ class RoamingAuthNonceEvent extends BaseEvent
 
     /**
      * NymiBandNonce getter
-     * @return {NymiBandInfo}
+     * @return {string}
      */
     getNymiBandNonce ()
     {
