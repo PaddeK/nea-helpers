@@ -30,7 +30,7 @@ class NymiBandInfo
     /**
      * RSSI getter
      * @param {boolean} smoothed
-     * @return {float}
+     * @return {number}
      */
     getRssi (smoothed = true)
     {
@@ -75,7 +75,7 @@ class NymiBandInfo
 
     /**
      * SinceLastContact getter
-     * @return {float}
+     * @return {number}
      */
     getSinceLastContact ()
     {
