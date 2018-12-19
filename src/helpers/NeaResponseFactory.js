@@ -389,8 +389,8 @@ class NeaResponseFactory
      * @param {object} eventInfo
      * @type {object}
      * @property {boolean} authenticated
-     * @property {float} age
-     * @property {float} remaining
+     * @property {number} age
+     * @property {number} remaining
      * @return {PresenceChangeEvent}
      * @private
      */
@@ -542,13 +542,13 @@ class NeaResponseFactory
     static _createAcknowledgementResponse (response)
     {
         return new AcknowledgementResponse(
-                response.completed,
-                response.errors,
-                response.outcome,
-                response.request,
-                response.exchange,
-                response.path,
-                response.successful
+            response.completed,
+            response.errors,
+            response.outcome,
+            response.request,
+            response.exchange,
+            response.path,
+            response.successful
         );
     }
 
@@ -585,14 +585,14 @@ class NeaResponseFactory
      * Create NymiBandInfo
      * @param {object} info
      * @type {object}
-     * @property {float} RSSI_last
-     * @property {float} RSSI_smoothed
+     * @property {number} RSSI_last
+     * @property {number} RSSI_smoothed
      * @property {string} firmwareVersion
      * @property {FoundState} found
      * @property {boolean} provisioned
      * @property {boolean} isProvisioned
      * @property {PresenceState} present
-     * @property {float} sinceLastContact
+     * @property {number} sinceLastContact
      * @property {int} tid
      * @param {ProvisionInfo} provisionInfo
      * @return {NymiBandInfo}
@@ -618,14 +618,14 @@ class NeaResponseFactory
      * @param {object} info
      * @type {object}
      * @property {string} pid
-     * @property {float} authenticationWindowRemaining
+     * @property {number} authenticationWindowRemaining
      * @property {string[]} commandQueue
      * @property {int} commandsQueued
      * @property {boolean} hasApproached
      * @property {ProximityState} proximity
      * @property {object} provisioned
      * @property {string} provisioned.pid
-     * @property {float} provisioned.authenticationWindowRemaining
+     * @property {number} provisioned.authenticationWindowRemaining
      * @property {int} provisioned.commandsQueued
      * @return {ProvisionInfo}
      * @private
