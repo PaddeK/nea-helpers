@@ -47,9 +47,11 @@ class NeaConfig
          * @property {boolean} nymulator
          * @property {int} retryCount
          * @property {int} interval
+         * @property {string} sigAlgorithm
          */
 
-        this._config = config;
+        this._config = cnf;
+        this._configFile = config;
         this._neaName = cnf.neaName;
         this._logDirectory = cnf.logDirectory || path.dirname(config);
         this._logLevel = cnf.logLevel || NymiApi.LogLevel.NONE;
@@ -58,6 +60,27 @@ class NeaConfig
         this._nymulator = cnf.nymulator || false;
         this._retryCount = cnf.retryCount || 3;
         this._interval = cnf.interval || 100;
+        this._sigAlgorithm = cnf.sigAlgorithm || NymiApi.SignatureAlgorithm.NIST256P;
+    }
+
+    /**
+     * Signature Algorithm getter
+     * @return {string}
+     */
+    getSigAlgorithm ()
+    {
+        return this._sigAlgorithm;
+    }
+
+    /**
+     * Signature Algorithm setter
+     * @param {string} sigAlgorithm
+     * @return {NeaConfig}
+     */
+    setSigAlgorithm (sigAlgorithm)
+    {
+        this._sigAlgorithm = String(sigAlgorithm);
+        return this;
     }
 
     /**
@@ -244,7 +267,8 @@ class NeaConfig
             host: this.getHost(),
             nymulator: this.isNymulator(),
             retryCount: this.getRetryCount(),
-            interval: this.getInterval()
+            interval: this.getInterval(),
+            sigAlgorithm: this.getSigAlgorithm()
         };
     }
 
@@ -254,13 +278,13 @@ class NeaConfig
      */
     save ()
     {
-        fs.writeFileSync(this._config, this.toString());
+        fs.writeFileSync(this._configFile, this.toString());
     }
 
     /**
      * @typedef {Object} Config
      * @property {string} neaName
-     * @property {SignatureAlgorithm} sigAlgorithm
+     * @property {string} sigAlgorithm
      * @property {int} port
      * @property {string} host
      * @property {int} logLevel
@@ -274,24 +298,20 @@ class NeaConfig
      */
     isValidConfig (config)
     {
-        let keys = ['logLevel', 'port', 'host', 'nymulator', 'neaName'],
-            logLevels = NymiApi.LogLevel,
-            ok = true;
-
-        logLevels = Object.keys(logLevels).reduce((prev, cur) => prev.concat(logLevels[cur]), []);
-
-        ok &= typeof config === 'object';
-        ok &= keys.every(key => config[key] !== undefined);
-        ok &= typeof config.neaName === 'string';
-        ok &= NEANameRgx.test(config.neaName);
-        ok &= config.neaName && config.neaName.length <= 18;
-        ok &= config.nymulator === false || config.nymulator === true;
-        ok &= config.host.length > 0;
-        ok &= ['logLevel', 'port'].every(key => config[key] === ~~config[key]);
-        ok &= logLevels.includes(config.logLevel);
-        ok &= config.port >= 1024 && config.port <= 65535;
-
-        return !!ok;
+        return [
+            typeof config === 'object',
+            ['logLevel', 'port', 'host', 'nymulator', 'neaName'].every(key => config[key] !== undefined),
+            typeof config.neaName === 'string',
+            NEANameRgx.test(config.neaName),
+            config.neaName.length <= 18,
+            config.nymulator === false || config.nymulator === true,
+            typeof config.host === 'string',
+            config.host.length > 0,
+            ['logLevel', 'port'].every(key => config[key] === ~~config[key]),
+            Object.values(NymiApi.LogLevel).includes(config.logLevel),
+            config.port >= 1024 && config.port <= 65535,
+            Object.keys(NymiApi.SignatureAlgorithm).includes(config.sigAlgorithm)
+        ].every(Boolean);
     }
 }
 
